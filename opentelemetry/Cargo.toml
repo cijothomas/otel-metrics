@@ -7,3 +7,10 @@ publish = false
 
 [dependencies]
 
+[dev-dependencies]
+criterion = { workspace = true }
+rand = { workspace = true }
+
+[[bench]]
+name = "metrics"
+harness = false

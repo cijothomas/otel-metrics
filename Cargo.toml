@@ -4,3 +4,8 @@ members = [
     "opentelemetry-sdk",
     "hellometrics"
 ]
+
+
+[workspace.dependencies]
+criterion = "0.5"
+rand = { version = "0.8", default-features = false }

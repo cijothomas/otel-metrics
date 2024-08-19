@@ -4,7 +4,7 @@ use opentelemetry::{
     instrument_builder::{
         F64CounterBuilder, F64HistogramBuilder, U64CounterBuilder, U64HistogramBuilder,
     },
-    instruments::{F64Counter, F64Histogram, U64Counter, U64Histogram},
+    instruments::{F64Counter, F64Histogram, U64Counter, U64Histogram}, keyvalue::KeyValue,
 };
 
 pub struct U64CounterImpl {
@@ -14,7 +14,7 @@ pub struct U64CounterImpl {
 }
 
 impl U64Counter for U64CounterImpl {
-    fn add(&self, value: u64, labels: &[(&'static str, &'static str)]) {
+    fn add(&self, value: u64, labels: &[KeyValue]) {
         println!("Measurement recorded with value: {} {:?}", value, labels);
     }
 }
@@ -36,7 +36,7 @@ pub struct F64CounterImpl {
 }
 
 impl F64Counter for F64CounterImpl {
-    fn add(&self, value: f64, labels: &[(&'static str, &'static str)]) {
+    fn add(&self, value: f64, labels: &[KeyValue]) {
         println!("Measurement recorded with value: {} {:?}", value, labels);
     }
 }
@@ -58,7 +58,7 @@ pub struct U64HistogramImpl {
 }
 
 impl U64Histogram for U64HistogramImpl {
-    fn record(&self, value: u64, labels: &[(&'static str, &'static str)]) {
+    fn record(&self, value: u64, labels: &[KeyValue]) {
         println!("Measurement recorded with value: {} {:?}", value, labels);
     }
 }
@@ -80,7 +80,7 @@ pub struct F64HistogramImpl {
 }
 
 impl F64Histogram for F64HistogramImpl {
-    fn record(&self, value: f64, labels: &[(&'static str, &'static str)]) {
+    fn record(&self, value: f64, labels: &[KeyValue]) {
         println!("Measurement recorded with value: {} {:?}", value, labels);
     }
 }
